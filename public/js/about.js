@@ -153,11 +153,14 @@ function sorted_games(upper, lower, sort) {
     const cell2 = row.insertCell(1);
     const cell3 = row.insertCell(2);
     const cell4 = row.insertCell(3);
+    const cell5 = row.insertCell(4);
 
     cell1.innerHTML = "Title"
     cell2.innerHTML = "Sale Price"
     cell3.innerHTML = "Deal Rating"
     cell4.innerHTML = "Steam Rating"
+    cell5.innerHTML = "Store"
+    
 
     
     fetch(search_prompt)
@@ -172,13 +175,12 @@ function sorted_games(upper, lower, sort) {
                 const cell_sale = document.createElement('td'); //salePrice
                 const cell_deal = document.createElement('td'); //dealRating
                 const cell_rate = document.createElement('td'); //steamRatingText
+                const cell_store = document.createElement('td'); //store name
 
-                //Test Test ARGGHH!!!
-                const num = res[i].storeID;
-                const cellText1 = document.createTextNode(`${res[i].title} (${find_store(num)})`)
+
+                const cellText1 = document.createTextNode(`${res[i].title}`)
                 cell_game.appendChild(cellText1);
                 
-
                 if ((`${res[i].salePrice}`) == "0.00") {
                     cellText2 = document.createTextNode("Free!")
                 } else {
@@ -223,12 +225,18 @@ function sorted_games(upper, lower, sort) {
                     cell_rate.style.color = "white";
                 }
 
-                console.log(cellText1, cellText2, cellText3, cellText4)
+                const num = res[i].storeID;
+
+                const cellText5 = document.createTextNode(find_store(num));
+                cell_store.appendChild(cellText5);
+
+                console.log(cellText1, cellText2, cellText3, cellText4, cellText5)
 
                 row.appendChild(cell_game);
                 row.appendChild(cell_sale);
                 row.appendChild(cell_deal);
                 row.appendChild(cell_rate);
+                row.appendChild(cell_store)
                 tblBody.appendChild(row);
             }
             tbl.appendChild(tblBody)
@@ -239,22 +247,23 @@ function sorted_games(upper, lower, sort) {
 
 
 //Finds the store number
-function find_store(num) { 
-    console.log(num) 
-    fetch(`https://www.cheapshark.com/api/1.0/stores`)
-        .then(res => res.json())
-        .then((res) => {
-            res.forEach((current_store) => {
-                if (current_store.storeID == num) {
-                    store_name = current_store.storeName;
-                    console.log('in function', store_name) //Returns the store
-                    return store_name //Returns undefined
-                }
-            });
-            
-        });
-
-    };
-
+function find_store(num) {
+    let directory = {
+        "1": "Steam","2": "GamersGate", "3": "GreenManGaming",
+        "4": "Amazon","5": "GameStop","6": "Direct2Drive",
+        "7": "GOG","8": "Origin","9": "Get Games",
+        "10": "Shiny Loot","11": "Humble Store","12": "Desura",
+        "13": "Uplay","14": "IndieGameStand","15": "Fanatical",
+        "16": "Gamesrocket","17": "Games Republic","18": "SilaGames",
+        "19": "Playfield","20": "ImperialGames","21": "WinGameStore",
+        "22": "FunStockDigital","23": "GameBillet","24": "Voidu",
+        "25": "Epic Games Store","26": "Razer Game Store","27": "Gamesplanet",
+        "28": "Gamesload","29": "2Game","30": "IndieGala",
+        "31": "Blizzard Shop","32": "AllYouPlay","33": "DLGamer",
+        "34": "Noctre","35": "DreamGame"}
+    
+    console.log(directory[num]);
+    return directory[num];
+}
 
 
