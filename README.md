@@ -8,8 +8,7 @@
 Our app, Game Tracker, allows users to search through libraries of paid and free games on any platform. Our app gives users access to STEAM reviews, sale status, accurate prices, and more! We believe gamers on any platform could benefit from our app because of its aesthetically pleasing design, ease of use, and practicality. 
 
 ## User Manual Link
-    (UPDATE THIS BASED ON YOUR CODED SECTION)
-## Paid Games Page
+### Paid Games Page
 Upon first glance, the page offers users a few sorting options: Upper Price Limit, lower price limit, and sort by. Initially, the page is loaded with a table with the Top Five Games on Sale. The table will automatically reload to the sorted version after the user submits any of the sorting options above. Empty options will default to none. 
 
 The Top Five Games on Sale table and the Sorted Table are designed in the same fashion with the main difference is the length. The Sorted Table has 15 game options rather than just 5. This length is not unchangable.
