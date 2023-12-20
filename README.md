@@ -13,6 +13,9 @@ Upon first glance, the page offers users a few sorting options: Upper Price Limi
 
 The Top Five Games on Sale table and the Sorted Table are designed in the same fashion with the main difference is the length. The Sorted Table has 15 game options rather than just 5. This length is not unchangable.
 
+## Free Games Page
+This page allows users to sort a list of available free games by release-date, popularity, relevance, or alphabetically. After clicking the submit button, a table showing the name and developer of all available free games shows up. 
+
 ## Developer Manual 
 REQUIRED SECTION [
 
